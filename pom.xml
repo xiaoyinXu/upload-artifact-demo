@@ -4,9 +4,31 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.xxywebsite</groupId>
+    <groupId>io.github.xiaoyinxu</groupId>
     <artifactId>upload-artifact-demo</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>3.2</version>
+
+    <name>upload artifact demo</name>
+    <description>just for test</description>
+    <url>http://xxywebsite.com/</url>
+
+    <licenses>
+        <license>
+            <name>test license</name>
+            <url>http://xxywebsite.com/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>http://xxywebsite.com</url>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>xiaoyin Xu</name>
+        </developer>
+    </developers>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -32,6 +54,28 @@
             <build>
                 <plugins>
                     <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.6.13</version>
+                        <extensions>true</extensions>
+                        <!-- settings.xml -->
+                        <!--                        <settings>-->
+                        <!--                            <servers>-->
+                        <!--                                <server>-->
+                        <!--                                    <id>ossrh</id>-->
+                        <!--                                    <username>your-jira-id</username>-->
+                        <!--                                    <password>your-jira-pwd</password>-->
+                        <!--                                </server>-->
+                        <!--                            </servers>-->
+                        <!--                        </settings>-->
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
+
+                    <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
                         <version>3.0.1</version>
@@ -42,12 +86,14 @@
                                 <goals>
                                     <goal>sign</goal>
                                 </goals>
-                                <configuration>
-                                    <gpgArguments>
-                                        <arg>--pinentry-mode</arg>
-                                        <arg>loopback</arg>
-                                    </gpgArguments>
-                                </configuration>
+<!--                                                                <configuration>-->
+<!--                                                                    <keyname>0E0FFA0956127614</keyname>-->
+                                <!--                                    <passphraseServerId>0E0FFA0956127614</passphraseServerId>-->
+                                <!--                                    <gpgArguments>-->
+<!--                                                                        <arg>&#45;&#45;pinentry-mode</arg>-->
+<!--                                                                        <arg>loopback</arg>-->
+                                <!--                                    </gpgArguments>-->
+<!--                                                                </configuration>-->
                             </execution>
                         </executions>
                     </plugin>
@@ -77,7 +123,6 @@
                             </execution>
                         </executions>
                     </plugin>
-
                 </plugins>
             </build>
         </profile>

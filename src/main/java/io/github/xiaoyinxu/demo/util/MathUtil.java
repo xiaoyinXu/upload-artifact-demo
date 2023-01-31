@@ -1,4 +1,4 @@
-package com.xxywebsite.demo.util;
+package io.github.xiaoyinxu.demo.util;
 
 /**
  * @author xuxiaoyin
