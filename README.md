@@ -1,0 +1,1 @@
+a demo for illustrating how to upload artifact to maven central repository
