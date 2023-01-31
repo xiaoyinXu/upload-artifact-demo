@@ -1,1 +1,1 @@
-a demo for illustrating how to upload artifact to maven central repository
+a demo for illustrating how to upload a artifact to maven central repository
